@@ -170,6 +170,7 @@ jobs:
       - name: Pull latest changes from meshery.io
         run: |
           cd meshery.io
+          git config pull.rebase false
           git pull origin master
 
       - name: Commit changes to meshery.io repo
