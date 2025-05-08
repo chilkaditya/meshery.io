@@ -172,8 +172,7 @@ jobs:
       - name: Pull latest changes from meshery.io
         run: |
           cd meshery.io
-          git config pull.rebase false
-          git pull origin master
+          git pull origin master --allow-unrelated-histories
 
       - name: Commit changes to meshery.io repo
         uses: stefanzweifel/git-auto-commit-action@v5
