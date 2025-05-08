@@ -25,7 +25,7 @@ jobs:
       - name: Checkout meshery/meshery repo
         uses: actions/checkout@v4
         with:
-          repository: meshery/meshery
+          repository: chilkaditya/meshery
           path: meshery
           token: ${{ secrets.GH_ACCESS_TOKEN }}
 
