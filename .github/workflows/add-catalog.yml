@@ -17,7 +17,7 @@ jobs:
       contentID: ${{ steps.update_catalog_patterns.outputs.contentID }}
     steps:
       - name: Checkout meshery.io repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@master
         with:
           path: meshery.io
           token: ${{ secrets.GH_ACCESS_TOKEN }}
@@ -165,13 +165,13 @@ jobs:
           commit_user_email: ci@meshery.io
           commit_options: "--signoff"
           commit_message: "[Docs] Update _catalog collection"
-          branch: master
+          branch: ci/container-image-scanning
 
       - name: Pull latest changes from meshery.io
         run: |
           cd meshery.io
           git config pull.rebase false
-          git pull origin test/github-workflows-permission
+          git pull origin master
 
       - name: Commit changes to meshery.io repo
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -181,7 +181,7 @@ jobs:
           commit_user_email: ci@meshery.io
           commit_options: '--signoff'
           commit_message: '[Catalog] Update Catalog items'
-          branch: master
+          branch: test/github-workflows-permission 
 
       - name: Send Email on Workflow Failure
         if: ${{ failure() }}
