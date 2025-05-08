@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: chilkaditya/meshery.io
-          ref: master
+          ref: test/github-workflows-permission
           path: meshery.io
           token: ${{ secrets.GH_ACCESS_TOKEN }}
 
@@ -172,7 +172,7 @@ jobs:
       - name: Pull latest changes from meshery.io
         run: |
           cd meshery.io
-          git pull origin master --allow-unrelated-histories
+          git pull origin test/github-workflows-permission
 
       - name: Commit changes to meshery.io repo
         uses: stefanzweifel/git-auto-commit-action@v5
