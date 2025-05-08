@@ -17,8 +17,10 @@ jobs:
       contentID: ${{ steps.update_catalog_patterns.outputs.contentID }}
     steps:
       - name: Checkout meshery.io repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
         with:
+          repository: chilkaditya/meshery.io
+          ref: master
           path: meshery.io
           token: ${{ secrets.GH_ACCESS_TOKEN }}
 
