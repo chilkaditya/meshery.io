@@ -176,6 +176,11 @@ jobs:
           commit_message: "[Docs] Update _catalog collection"
           branch: master
 
+      - name: Force dummy file change
+        run: |
+          echo "test run at by chilka" >> meshery.io/catalog/debug.txt
+
+
       - name: Check if meshery.io/docs/_catalog has updates
         run: |
           cd meshery.io
