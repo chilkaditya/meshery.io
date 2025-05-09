@@ -4,7 +4,7 @@ on:
   push:
     # our release branch
     branches:
-      - master
+      - test/github-workflows-permission
 
 permissions:
   contents: read
