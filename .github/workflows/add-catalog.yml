@@ -176,6 +176,12 @@ jobs:
           commit_message: "[Docs] Update _catalog collection"
           branch: master
 
+      - name: Check if meshery.io/docs/_catalog has updates
+        run: |
+          cd meshery.io
+          if [ ! -d .git ]; then echo "❌ No .git directory — not a git repo!" && exit 1; fi
+          git status
+
       - name: Pull latest changes from meshery.io
         run: |
           cd meshery.io
