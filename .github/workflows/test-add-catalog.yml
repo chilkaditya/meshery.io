@@ -1,0 +1,35 @@
+name: Check Workflow Commit Permission
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          repository: chilkaditya/meshery.io
+          ref: test/github-workflows-permission
+          path: meshery.io
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
+
+      - name: Make a dummy change
+        run: |
+          echo "Test run at $(date)" >> meshery.io/debug.txt
+
+      - name: Commit and push
+        run: |
+          cd meshery.io
+          git config user.name "l5io"
+          git config user.email "ci@meshery.io"
+
+          git add debug.txt
+          git commit -m "Test: Checking commit permission from workflow" --signoff || echo "Nothing to commit"
+
+          git remote set-url origin https://chilkaditya:${{ secrets.GH_ACCESS_TOKEN }}@github.com/chilkaditya/meshery.io.git
+          git push origin test/github-workflows-permission
