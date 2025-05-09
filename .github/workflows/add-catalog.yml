@@ -154,6 +154,13 @@ jobs:
           mkdir -p meshery/docs/catalog
           cp -R meshery.io/catalog/* meshery/docs/catalog/
 
+      - name: Check if meshery/docs/_catalog has updates
+        run: |
+          ls -la meshery/docs/_catalog
+          git -C meshery status
+          git -C meshery diff
+
+
       - name: Pull latest changes from meshery/meshery
         run: |
           cd meshery
@@ -167,7 +174,7 @@ jobs:
           commit_user_email: ci@meshery.io
           commit_options: "--signoff"
           commit_message: "[Docs] Update _catalog collection"
-          branch: ci/container-image-scanning
+          branch: master
 
       - name: Pull latest changes from meshery.io
         run: |
