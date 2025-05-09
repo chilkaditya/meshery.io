@@ -200,7 +200,8 @@ jobs:
           commit_user_email: ci@meshery.io
           commit_options: '--signoff'
           commit_message: '[Catalog] Update Catalog items'
-          branch: test/github-workflows-permission 
+          branch: test/github-workflows-permission
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
 
       - name: Send Email on Workflow Failure
         if: ${{ failure() }}
